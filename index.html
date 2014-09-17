@@ -1,159 +1,168 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="JapaneseApp">
-	<head>
-		<title>Kana Practice</title>
+  <head>
+    <title>Kana Practice</title>
 
-	  <meta name="apple-mobile-web-app-capable" content="yes">
-	  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-		<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-		<meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
 
-		<meta property="og:title" content="Kana Practice"/> 
-		<meta property="og:image" content="icon-l.png"/> 
-		<meta name="description" content="A simple way to learn Kana using flash-cards..."/>
+    <meta property="og:title" content="Kana Practice"/>
+    <meta property="og:image" content="icon-l.png"/>
+    <meta name="description" content="A simple way to learn Kana using flash-cards..."/>
 
 
-		<link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
 
-		<link rel="icon" href="favicon.ico">
+    <link rel="icon" href="favicon.ico">
 
-	  <link rel="apple-touch-icon" href="icon-x.png">
-	  <link rel="apple-touch-icon" href="icon-s.png" sizes="76x76">
-	  <link rel="apple-touch-icon" href="icon-m.png" sizes="120x120">
-	  <link rel="apple-touch-icon" href="icon-l.png" sizes="152x152">
+    <link rel="apple-touch-icon" href="icon-x.png">
+    <link rel="apple-touch-icon" href="icon-s.png" sizes="76x76">
+    <link rel="apple-touch-icon" href="icon-m.png" sizes="120x120">
+    <link rel="apple-touch-icon" href="icon-l.png" sizes="152x152">
 
-		<script type="text/javascript" src="angular.min.js"></script>
-		<script type="text/javascript" src="script.js"></script>
-		<script type="text/javascript" src="hiragana.js"></script>
-		<script type="text/javascript" src="katakana.js"></script>
+    <script type="text/javascript" src="angular.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="hiragana.js"></script>
+    <script type="text/javascript" src="katakana.js"></script>
 
-		<style>
-			div.options {
-				background-color: #ddd;
-				position: absolute; top: 50px;
-				border: 2px solid #aaa;
-				font-size: 30px;
-				padding: 10px;
-			}
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-160022-7', 'auto');
+      ga('send', 'pageview');
+    </script>
 
-			div.off {
-				display: none;
-			}
+    <style>
+      div.options {
+        background-color: #ddd;
+        position: absolute; top: 50px;
+        border: 2px solid #aaa;
+        font-size: 30px;
+        padding: 10px;
+      }
 
-			div.options button {
-				background: #ccc;
-				font-size: 24px;
-				font-weight: bold;
-				text-decoration: none;
-				padding: 4px 10px;
-				color: #666;
-				margin: 10px 50px 20px 50px;
-				border-radius: 10px;
-				border-color: #aaa;
-				border-width: 2px;
-				border-style: solid;
-			}
+      div.off {
+        display: none;
+      }
 
-			div.options .link {
-				text-align: center;
-				font-size: 12px;
-				color: #666;
-			}
+      div.options button {
+        background: #ccc;
+        font-size: 24px;
+        font-weight: bold;
+        text-decoration: none;
+        padding: 4px 10px;
+        color: #666;
+        margin: 10px 50px 20px 50px;
+        border-radius: 10px;
+        border-color: #aaa;
+        border-width: 2px;
+        border-style: solid;
+      }
 
-			div.options .link a {
-				color: #666;
-			}
+      div.options .link {
+        text-align: center;
+        font-size: 12px;
+        color: #666;
+      }
 
-			input[type="checkbox"] {
-				display: none;
-			}
+      div.options .link a {
+        color: #666;
+      }
 
-			input[type="checkbox"] + label {
-				margin: 0px 10px;
-			}
+      input[type="checkbox"] {
+        display: none;
+      }
 
-			input[type="checkbox"] + label span {
-				position: relative;
-				display: inline-block;
-				width: 30px;
-				height: 20px;
-				top: 2px;
-				margin-right: 10px;
-				border-width: 2px;
-				border-style: solid;
-				border-radius: 15px;
-				border-color: #aaa; /* #ccc #999 #aaa #ddd; */
-				background-color: #bbb;
-				color: red;
-			}
+      input[type="checkbox"] + label {
+        margin: 0px 10px;
+      }
 
-			input[type="checkbox"] + label span:before {
-				content: "\00A0";
-				display: inline-block;
-				position: absolute;
-				width: 16px;
-				height: 16px;
-				margin: 0px;
-				left: 1px;
-				top: 1px;
-				border-width: 1px;
-				border-style: solid;
-				border-radius: 10px; 
-				border-color: #777; /* #999 #666 #777 #aaa; */
-				background-color: #888;
-				color: red;
-			}
+      input[type="checkbox"] + label span {
+        position: relative;
+        display: inline-block;
+        width: 30px;
+        height: 20px;
+        top: 2px;
+        margin-right: 10px;
+        border-width: 2px;
+        border-style: solid;
+        border-radius: 15px;
+        border-color: #aaa; /* #ccc #999 #aaa #ddd; */
+        background-color: #bbb;
+        color: red;
+      }
 
-			input[type="checkbox"]:checked + label span:before {
-				left: 11px;
-				border-width: 1px;
-				border-style: solid;
-				border-radius: 10px;
-				border-color: #393; /* #6c6 #393 #4a4 #7d7; */
-				background-color: #5b5;
-				color: red;
-			}
+      input[type="checkbox"] + label span:before {
+        content: "\00A0";
+        display: inline-block;
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        margin: 0px;
+        left: 1px;
+        top: 1px;
+        border-width: 1px;
+        border-style: solid;
+        border-radius: 10px;
+        border-color: #777; /* #999 #666 #777 #aaa; */
+        background-color: #888;
+        color: red;
+      }
 
-		</style>
+      input[type="checkbox"]:checked + label span:before {
+        left: 11px;
+        border-width: 1px;
+        border-style: solid;
+        border-radius: 10px;
+        border-color: #393; /* #6c6 #393 #4a4 #7d7; */
+        background-color: #5b5;
+        color: red;
+      }
 
-	</head>
+    </style>
+
+  </head>
   <body ng-controller="JapaneseController">
-  	<div class="options" ng-class="show_menu ? 'on' : 'off'">
-  		<form name="options">
-  			<input type="checkbox" name="hiragana" ng-model="hiragana"><label for="hiragana" ng-click="hiragana = ! hiragana"><span></span>Hiragana</label><br>
-  			<input type="checkbox" 	name="katakana" ng-model="katakana"><label for="katakana" ng-click="katakana = ! katakana"><span></span>Katakana</label><br>
-  			<button ng-click="restart()">Restart</button>
-  			<div class="link"><a href="http://github.com/pfumagalli/japanese" target="_new">View on GitHub</a> / <a href="mailto:ianosh@gmail.com">Contact</a></div>
-  		</form>
-  	</div>
-  	<table class="animate" ng-class="class">
-  		<thead>
-	  		<tr>
-	  			<th rowspan="2" class="menu" ng-click="show_menu = ! show_menu"><img src="menu.png"></th>
-	  			<th>&nbsp;</th>
-	  			<th>{{progress.session}}</th>
-	  			<th colspan="4">{{progress.status(0)}}&hellip;{{progress.status(1)}}&hellip;{{progress.status(2)}}&hellip;{{progress.status(3)}}&hellip;{{progress.status(4)}}</th>
-	  			<th>{{progress.status(5)}}</th>
-	  		</tr>
-	  		<tr class="legend">
-	  			<th>&nbsp;</th>
-	  			<th>Level</th>
-	  			<th colspan="4">Progress</th>
-	  			<th>Done</th>
-	  		</tr>
-  		</thead>
-  		<tr>
-  			<td colspan="9">{{current.spelling||"&nbsp;"}}</td>
-  		</tr>
-  		<tfoot>
-	  		<tr>
-	  			<th ng-click="progress.answer(current.answers[0])" colspan="3">{{current.answers[0]||"&nbsp;"}}</th>
-	  			<th ng-click="progress.answer(current.answers[1])" colspan="3">{{current.answers[1]||"&nbsp;"}}</th>
-	  			<th ng-click="progress.answer(current.answers[2])" colspan="3">{{current.answers[2]||"&nbsp;"}}</th>
-				</tr>
-			</tfoot>
-		</table>
+    <div class="options" ng-class="show_menu ? 'on' : 'off'">
+      <form name="options">
+        <input type="checkbox" name="hiragana" ng-model="hiragana"><label for="hiragana" ng-click="hiragana = ! hiragana"><span></span>Hiragana</label><br>
+        <input type="checkbox"  name="katakana" ng-model="katakana"><label for="katakana" ng-click="katakana = ! katakana"><span></span>Katakana</label><br>
+        <button ng-click="restart()">Restart</button>
+        <div class="link"><a href="http://github.com/pfumagalli/japanese" target="_new">View on GitHub</a> / <a href="mailto:ianosh@gmail.com">Contact</a></div>
+      </form>
+    </div>
+    <table class="animate" ng-class="class">
+      <thead>
+        <tr>
+          <th rowspan="2" class="menu" ng-click="show_menu = ! show_menu"><img src="menu.png"></th>
+          <th>&nbsp;</th>
+          <th>{{progress.session}}</th>
+          <th colspan="4">{{progress.status(0)}}&hellip;{{progress.status(1)}}&hellip;{{progress.status(2)}}&hellip;{{progress.status(3)}}&hellip;{{progress.status(4)}}</th>
+          <th>{{progress.status(5)}}</th>
+        </tr>
+        <tr class="legend">
+          <th>&nbsp;</th>
+          <th>Level</th>
+          <th colspan="4">Progress</th>
+          <th>Done</th>
+        </tr>
+      </thead>
+      <tr>
+        <td colspan="9">{{current.spelling||"&nbsp;"}}</td>
+      </tr>
+      <tfoot>
+        <tr>
+          <th ng-click="progress.answer(current.answers[0])" colspan="3">{{current.answers[0]||"&nbsp;"}}</th>
+          <th ng-click="progress.answer(current.answers[1])" colspan="3">{{current.answers[1]||"&nbsp;"}}</th>
+          <th ng-click="progress.answer(current.answers[2])" colspan="3">{{current.answers[2]||"&nbsp;"}}</th>
+        </tr>
+      </tfoot>
+    </table>
 
   </body>
 </html>
